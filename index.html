@@ -55,6 +55,12 @@
             background-color: #d0d0d0;
         }
 
+        .btn-maior{
+            width: 120px; /* Aumenta a largura do botão*/
+            height: 45px; /* Mantem a altura*/
+            font-size: 18px;
+        }
+
         input{
             width: 260px;
             height: 30px;
@@ -90,6 +96,12 @@
                 height: 70px; /* Reduz a altura dos botões*/
                 font-size: 30px; /* Diminui o tamanho da fonte dos botões */
             }
+
+            .btn-maior {
+                width: 140px; /* Aumenta o tamanho dos botões maiores em telas menores*/
+                height: 70px; /* Ajusta a altura*/
+            }
+
             input {
                 width: 94%; /* Faz o campo de resultado ocupar 100% da largura disponível */
                 font-size: 18px; /* Diminui o tamanho da fonte do campo de resultado */
@@ -121,27 +133,42 @@
             <button onclick="adicionar('x')">x</button>
             <br>
             <button onclick="adicionar('0')">0</button>
+            <button onclick="adicionar(',')">,</button>
             <button onclick="calcular()">=</button>
-            <button onclick="limpar()">C</button>
             <button onclick="adicionar('÷')">÷</button>
-
+            <button class="btn-maior" onclick="limpar()">C</button>
+            <button class="btn-maior" onclick="apagarUltimo()">←</button>
         </div>
     </section>
 
     <script>
         function adicionar(valor){
-            document.getElementById('resultado').value += valor;
+            //document.getElementById('resultado').value += valor;
+            let campo = document.getElementById('resultado')
+            let ultimoCaracter = campo.value.slice(-1)//Pega o ultimo caracter da expressão
+
+            //Define os operadores que não podem ser repetidos consecutivamente
+            const operadores = ['+', '-', 'x', '÷', ',']
+
+            //Se o ultimo caracter for um operador e valor atual também for um operador, impede a inserção
+            if(operadores.includes(ultimoCaracter) && operadores.includes(valor)) {
+                return; //Não adiciona o operador se houver um operador final
+            }
+
+            campo.value += valor
+
+
         }
 
         function calcular() {
             let expressao = document.getElementById('resultado').value;
 
             //Substitui os símbolos visuais por operadores matemáticos
-            expressao = expressao.replace(/x/g, '*').replace(/÷/g, '/');
+            expressao = expressao.replace(/,/g, '.').replace(/x/g, '*').replace(/÷/g, '/');
 
             try {
                 const resultado = eval(expressao);
-                document.getElementById('resultado').value = resultado;
+                document.getElementById('resultado').value = resultado.toString().replace('.',',');
             } catch (error) {
                 document.getElementById('resultado').value = 'Erro';
             }
@@ -150,6 +177,11 @@
 
         function limpar(){
             document.getElementById('resultado').value = '';
+        }
+
+        function apagarUltimo() {
+            let campo = document.getElementById('resultado');
+            campo.value = campo.value.slice(0, -1); //Remove o ultimo caracter
         }
     </script>
 </body>

@@ -27,7 +27,7 @@
             color: white;
             width: 276px;
             margin: auto;
-            margin-top: 100px;
+            margin-top: 40px;
 
             
         }
@@ -80,6 +80,17 @@
         input:hover{
             background-color: #d0d0d0;
         }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            color: white;
+            font-size: 15px;
+            width: 100%;
+            background-color: black;
+            padding: 10px 0;
+            position: relative;
+        }
         
         
         /* Estilos para telas menores (como celulares)*/
@@ -116,6 +127,10 @@
             input:hover{
                 background-color: #d0d0d0;
         }
+        footer {
+                font-size: 10px; /* Ajusta o tamanho da fonte no celular */
+                padding: 5px 0;
+            }
         }
     </style>
 </head>
@@ -150,6 +165,10 @@
             <button class="btn-maior" onclick="apagarUltimo()">←</button>
         </div>
     </section>
+    <footer>
+        © 2024 Minha Calculadora. Todos os direitos reservados.<br>
+        Wendell Yasunori Tahara
+    </footer>
 
     <script>
         function adicionar(valor){

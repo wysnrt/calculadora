@@ -8,7 +8,7 @@
         body{
             background-color: black;
             font-size: 10px;
-
+            
 
         }
         section{
@@ -88,7 +88,8 @@
         /* Estilos para telas menores (como celulares)*/
         @media (max-width: 600px) {
             body{
-                padding-top: 50px;
+                justify-content: flex-start; /* Alinha a calculadora no topo*/
+                padding-top: 30px; /* Adiciona um pequeno espaço no topo*/
             }
 
             section {
@@ -101,6 +102,10 @@
                 font-size: 30px; /* Diminui o tamanho da fonte dos botões */
             }
 
+            button:hover{
+                background-color: #d0d0d0;
+        }
+
             .btn-maior {
                 width: 160px; /* Aumenta o tamanho dos botões maiores em telas menores*/
                 height: 70px; /* Ajusta a altura*/
@@ -110,6 +115,10 @@
                 width: 94%; /* Faz o campo de resultado ocupar 100% da largura disponível */
                 font-size: 18px; /* Diminui o tamanho da fonte do campo de resultado */
             }
+
+            input:hover{
+                background-color: #d0d0d0;
+        }
         }
     </style>
 </head>

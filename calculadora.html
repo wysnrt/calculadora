@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body{
+            background-color: black;
+            font-size: 10px;
+
+
+        }
+        section{
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 276px;
+            margin: auto;
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.904);
+            background-color: black;
+
+        }
+
+        header{
+            text-align: center;
+            margin-top: 120pt;
+            font: bold 10pt Arial;
+            color: white;
+            padding: 15px;
+            width: 276px;
+            margin: auto;
+            margin-top: 150px;
+
+            
+        }
+
+        button{
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            margin: 8px;
+            margin-top: 20px;
+            border-radius: 10px;
+            border: none;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 5px 5px 10px rgb(25, 120, 179);
+            background-color: gray
+
+        }
+
+        button:hover{
+            background-color: #d0d0d0;
+        }
+
+        input{
+            width: 260px;
+            height: 30px;
+            border-radius: 10px;
+            border: none;
+            background-color: #f0f0f0;
+            color: black;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-colocar 0.3s;
+            margin-left: 4pt;
+            box-shadow: 6px 6px 10px rgb(25, 120, 179);
+            background-color: white;
+            text-size-adjust: 20px;
+            font-weight: bold;
+            padding-left: 7px;
+
+        }
+
+        input:hover{
+            background-color: #d0d0d0;
+        }
+
+        @media (max-width: 600px) {
+            section {
+                width: 90%; /* Calculadora ocupa 90% da largura da tela */
+            }
+            button {
+                width: 50px;
+                height: 50px;
+                font-size: 18px;
+            }
+            input {
+                width: 90%;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculadora</h1>
+    </header>
+    <section>
+        <div>
+            <input type="text" id="resultado" disabled>
+            <br>
+            <button onclick="adicionar('1')">1</button>
+            <button onclick="adicionar('2')">2</button>
+            <button onclick="adicionar('3')">3</button>
+            <button onclick="adicionar('+')">+</button>
+            <br>
+            <button onclick="adicionar('4')">4</button>
+            <button onclick="adicionar('5')">5</button>
+            <button onclick="adicionar('6')">6</button>
+            <button onclick="adicionar('-')">-</button>
+            <br>
+            <button onclick="adicionar('7')">7</button>
+            <button onclick="adicionar('8')">8</button>
+            <button onclick="adicionar('9')">9</button>
+            <button onclick="adicionar('x')">x</button>
+            <br>
+            <button onclick="adicionar('0')">0</button>
+            <button onclick="calcular()">=</button>
+            <button onclick="limpar()">C</button>
+            <button onclick="adicionar('÷')">÷</button>
+
+        </div>
+    </section>
+
+    <script>
+        function adicionar(valor){
+            document.getElementById('resultado').value += valor;
+        }
+
+        function calcular() {
+            let expressao = document.getElementById('resultado').value;
+
+            //Substitui os símbolos visuais por operadores matemáticos
+            expressao = expressao.replace(/x/g, '*').replace(/÷/g, '/');
+
+            try {
+                const resultado = eval(expressao);
+                document.getElementById('resultado').value = resultado;
+            } catch (error) {
+                document.getElementById('resultado').value = 'Erro';
+            }
+                
+        }
+
+        function limpar(){
+            document.getElementById('resultado').value = '';
+        }
+    </script>
+</body>
+</html>
